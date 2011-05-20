@@ -46,7 +46,7 @@ myswl2json - Convert mysql(1) batch output (-B) into JSON records.
 
 =head1 COPYRIGHT and LICENSE
 
-App::PipeFilter is Copyright 2001 by Rocco Caputo.  All rights are
+App::PipeFilter is Copyright 2011 by Rocco Caputo.  All rights are
 reserved.  App::PipeFilter is released under the same terms as Perl
 itself.
 
