@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::JsonMap;
+
+App::PipeFilter::JsonMap->new_with_options()->run();

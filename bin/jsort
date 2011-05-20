@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::JsonSort;
+
+exit App::PipeFilter::JsonSort->new_with_options()->run();

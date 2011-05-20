@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::MysqlToJson;
+
+exit App::PipeFilter::MysqlToJson->new_with_options()->run();
+
+__END__
+
+mysql -u user -password -h 10.0.0.5 database \
+	-e 'select crontab_id, task_id from crontab' -B \
+	| ./bin/mysql2json \
+	| ./bin/jsort -k task_id -rn
+
+{"crontab_id":"102","task_id":"701"}
+{"crontab_id":"101","task_id":"700"}
+{"crontab_id":"100","task_id":"650"}
+{"crontab_id":"8","task_id":"599"}
+{"crontab_id":"14","task_id":"38"}
+{"crontab_id":"12","task_id":"36"}
+{"crontab_id":"10","task_id":"35"}
+{"crontab_id":"11","task_id":"34"}
+{"crontab_id":"9","task_id":"33"}
+{"crontab_id":"7","task_id":"10"}
+{"crontab_id":"6","task_id":"9"}
+{"crontab_id":"5","task_id":"8"}
+{"crontab_id":"4","task_id":"7"}
+{"crontab_id":"3","task_id":"6"}
+{"crontab_id":"2","task_id":"5"}
+{"crontab_id":"1","task_id":"4"}

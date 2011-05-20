@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::JsonToYaml;
+
+exit App::PipeFilter::JsonToYaml->new_with_options()->run();

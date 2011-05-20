@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::JsonCut;
+
+App::PipeFilter::JsonCut->new_with_options()->run();
