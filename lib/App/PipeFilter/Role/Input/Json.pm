@@ -4,9 +4,19 @@ use Moose::Role;
 
 use JSON::XS;
 
+has _json => (
+  is      => 'rw',
+  isa     => 'JSON::XS',
+  lazy    => 1,
+  default => sub {
+    my $self = shift;
+    return JSON::XS->new();
+  },
+);
+
 sub decode_input {
-  # Skips $self in $_[0].
-  return decode_json($_[1]);
+  my $self = shift();
+  return map { $self->_json()->incr_parse($_) } @_;
 }
 
 1;

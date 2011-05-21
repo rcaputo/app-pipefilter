@@ -7,9 +7,9 @@ exit App::PipeFilter::MysqlToJson->new_with_options()->run();
 __END__
 
 mysql -u user -password -h 10.0.0.5 database \
-	-e 'select crontab_id, task_id from crontab' -B \
-	| ./bin/mysql2json \
-	| ./bin/jsort -k task_id -rn
+  -e 'select crontab_id, task_id from crontab' -B \
+  | ./bin/mysql2json \
+  | ./bin/jsort -k task_id -rn
 
 {"crontab_id":"102","task_id":"701"}
 {"crontab_id":"101","task_id":"700"}

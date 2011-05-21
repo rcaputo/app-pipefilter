@@ -32,9 +32,9 @@ sub run {
 
     $self->file_start($ifh, $ofh);
 
-    while (<$ifh>) {
-      next unless defined(my $input = $self->decode_input($_));
-      next unless my (@output) = $self->transform($input);
+    while (sysread($ifh, $_ = "", 65536)) {
+      next unless my (@input) = $self->decode_input($_);
+      next unless my (@output) = $self->transform(@input);
       print $ofh $_ foreach $self->encode_output(@output);
     }
 
