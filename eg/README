@@ -1,6 +1,21 @@
 duckduckgo.json is a sample JSON response from:
-curl 'http://api.duckduckgo.com/?q=poe&o=json' > duckduckgo.json
+curl 'http://api.duckduckgo.com/?q=poe&o=json'
 
-reddit.json is sample JSON from http://www.reddit.com/.json
+reddit.json is sample JSON from:
+curl http://www.reddit.com/.json
 
 sample.json is just some tabular data I put together for testing.
+
+delicious-urlinfo.json comes from:
+curl -s http://feeds.delicious.com/v2/json/urlinfo/7b6cdc20ad985d4ddc547cd18a9e3998
+
+*** Filtering Web Data with JSONPath
+
+% curl -s 'http://api.duckduckgo.com/?q=poe&o=json' |
+jpath -o '$..Topics.*.FirstURL' -o '$..Topics.*.Text' |
+jmap -i col0 -o url -i col1 -o title |
+grep -i perl |
+json2yaml
+--- 
+title: Perl Object Environment, a library for event driven multitasking for the Perl programming language
+url: http://duckduckgo.com/Perl_Object_Environment

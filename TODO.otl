@@ -4,6 +4,6 @@
 	[_] 0% Document the libraries.
 	[_] 0% Document the executables.
 	[_] 0% Test dzil.ini.
-[_] % Additional features
-	[_] % Allow -o to be JSON::Path descriptions.
-		This would be easy, except how are the results represented?
+[X] 100% Additional features
+	[X] 100% Allow -o to be JSON::Path descriptions.
+		Implemented jpath that acts like jcut but using JSONPath.

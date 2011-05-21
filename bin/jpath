@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use App::PipeFilter::JsonPath;
+
+App::PipeFilter::JsonPath->new_with_options()->run();
