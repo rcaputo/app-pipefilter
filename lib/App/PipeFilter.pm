@@ -24,11 +24,11 @@ objects rather than whitespace separated fields.
   {"network":"magnet","channel":"#poe"}
   {"network":"magnet","channel":"#reflex"}
 
-The jpath filter supports more complex expressions using JSON::Path's
-variant of JSONPath.
+The jsonpath filter supports more complex expressions using
+JSON::Path's variant of JSONPath.
 
   % curl -s 'http://api.duckduckgo.com/?q=poe&o=json' |
-  jpath -o '$..Topics.*.FirstURL' -o '$..Topics.*.Text' |
+  jsonpath -o '$..Topics.*.FirstURL' -o '$..Topics.*.Text' |
   grep -i perl |
   jmap -i col0 -o url -i col1 -o title |
   json2yaml
@@ -40,7 +40,7 @@ variant of JSONPath.
 
 Follow the UNIX convention of one record per line of text.  This
 ensures App::PipeFilter tools are compatible with many standard UNIX
-filters.  In the examples above, jcut and jpath output is piped
+filters.  In the examples above, jcut and jsonpath output is piped
 through sort(1), uniq(1) and grep(1).
 
 =head1 PRO TIPS
@@ -54,11 +54,11 @@ jcut - Extract one or more named fields from JSON input.
 
 jmap - Rename one or more named fields from JSON input.
 
-jpath - Like jcut, but fields are described using JSON::Path's
-variant of JSONPath.
-
 json2yaml - Convert JSON input records to YAML output records.  Some
 people may find YAML output to be more readable.
+
+jsonpath - Like jcut, but fields are described using JSON::Path's
+variant of JSONPath.
 
 jsort - Sort JSON input on one or more key fields.
 
