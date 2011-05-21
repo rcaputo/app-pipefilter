@@ -1,0 +1,6 @@
+duckduckgo.json is a sample JSON response from:
+curl 'http://api.duckduckgo.com/?q=poe&o=json' > duckduckgo.json
+
+reddit.json is sample JSON from http://www.reddit.com/.json
+
+sample.json is just some tabular data I put together for testing.

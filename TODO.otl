@@ -1,0 +1,9 @@
+[_] 40% Requirements for CPAN 1.000 release
+	[X] 100% Support multiline JSON input using JSON::XS's incremental parser.
+	[X] 100% Read input in large chunks, parsing incrementally.
+	[_] 0% Document the libraries.
+	[_] 0% Document the executables.
+	[_] 0% Test dzil.ini.
+[_] % Additional features
+	[_] % Allow -o to be JSON::Path descriptions.
+		This would be easy, except how are the results represented?
