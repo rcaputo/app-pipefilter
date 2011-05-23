@@ -50,31 +50,48 @@ eliminate objects as early as possible in pipelines.
 
 =head1 SEE ALSO
 
-jcut - Extract one or more named fields from JSON input.
+L<jcat> reads a JSON stream or one or more JSON files and writes
+another JSON stream or JSON file.
 
-jmap - Rename one or more named fields from JSON input.
+L<jcut> extracts fields from simple JSON objects.  It's modeled after
+cut(1), but the -k flags name JSON fields.
 
-json2yaml - Convert JSON input records to YAML output records.  Some
-people may find YAML output to be more readable.
+L<jmap> produces a JSON stream with specified fields renamed.
 
-jsonpath - Like jcut, but fields are described using JSON::Path's
-variant of JSONPath.
+L<json2yaml> converts a JSON stream or files into a YAML stream or
+file.  It's useful for viewing data vertically as well.
 
-jsort - Sort JSON input on one or more key fields.
+L<jsonpath> extracts fields from complex JSON objects.  It's modeled
+after cut(1), but the -k flags describe JSON fields using JSON::Path
+expressions.
 
-myswl2json - Convert mysql(1) batch output (-B) into JSON records.
+L<jsort> sorts a JSON stream on key fields.  It's modeled after
+sort(1), but -k flags name key JSON fields to sort by.
 
-http://json.org/
+L<mysql2json> converts mysql(1) batch output (-B flag) into a stream
+of JSON objects, one for each MySQL row.
 
-http://search.cpan.org/perldoc?JSON::Path
+L<http://json.org/>
 
-http://goessner.net/articles/JsonPath/
+L<http://search.cpan.org/perldoc?JSON::Path>
+
+L<http://goessner.net/articles/JsonPath/>
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
 
 =head1 COPYRIGHT and LICENSE
 
-App::PipeFilter is Copyright 2011 by Rocco Caputo.  All rights are
-reserved.  App::PipeFilter is released under the same terms as Perl
-itself.
+App::PipeFilter
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+App::PipeFilter
+is released under the same terms as Perl itself.
 
 =cut
 

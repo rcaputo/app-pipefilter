@@ -1,7 +1,5 @@
 #!/usr/bin/perl
-
 use App::PipeFilter::MysqlToJson;
-
 exit App::PipeFilter::MysqlToJson->new_with_options()->run();
 
 __END__

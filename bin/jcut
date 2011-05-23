@@ -1,5 +1,59 @@
 #!/usr/bin/perl
-
 use App::PipeFilter::JsonCut;
+exit App::PipeFilter::JsonCut->new_with_options()->run();
 
-App::PipeFilter::JsonCut->new_with_options()->run();
+__END__
+
+=head1 NAME
+
+jcut - cut out selected portions of each JSON object in a file
+
+=head1 SYNOPSIS
+
+  jcut -o field_1 [-o field_2 ...] < input.json
+
+  jcut -o field --input eg/sample.json
+
+  jcut -o field --input eg/sample.json --output new.json
+
+=head1 DESCRIPTION
+
+jcut(1) cuts out selected portions of each JSON record and writes them
+to standard output or a named file.  Multiple fields may be specified
+with additional -o flags.
+
+jcut(1) inherits its --input, --output and --verbose flags from
+L<App::PipeFilter::Role::Flags::Standard>.
+See that module for more detailed documentation.
+
+jcut(1) inherits its -o flag from L<App::PipeFilter::JsonCut>.
+See that module for more detailed documentation.
+
+=head1 SEE ALSO
+
+You may read this module's implementation in its entirety at
+
+  perldoc -m jcut
+
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and binaries included in the project.
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
+
+=head1 COPYRIGHT AND LICENSE
+
+jcut
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+jcut
+is released under the same terms as Perl itself.
+
+=cut
+
+# vim: ts=2 sw=2 expandtab

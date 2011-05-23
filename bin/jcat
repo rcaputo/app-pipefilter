@@ -1,28 +1,28 @@
 #!/usr/bin/perl
-use App::PipeFilter::JsonToYaml;
-exit App::PipeFilter::JsonToYaml->new_with_options()->run();
+use App::PipeFilter::JsonCat;
+exit App::PipeFilter::JsonCat->new_with_options()->run();
 
 __END__
 
 =head1 NAME
 
-json2yaml - convert a stream of JSON objects into a stream of YAML
-objects
+jcat - catenate JSON streams
 
 =head1 SYNOPSIS
 
-  json2yaml < eg/sample.json
+  jcat < eg/sample.json
 
-  json2yaml --input eg/sample.json --output new.yaml
+  jcat --input eg/sample.json --output new.json
 
-  json2yaml --input eg/sample.json --output new.yaml --verbose
+  jcat --input eg/sample.json --output new.json --verbose
 
 =head1 DESCRIPTION
 
-json2yaml(1) reads files sequentially, writing them as YAML to
-standard output or a named file.
+jcat(1) reads files sequentially, writing them to standard output or a
+named file.  JSON records are written one per line regardless of their
+input configuration.
 
-json2yaml(1) inherits its --input, --output and --verbose flags from
+jcat(1) inherits its --input, --output and --verbose flags from
 L<App::PipeFilter::Role::Flags::Standard>.  See that module for more
 detailed documentation.
 
@@ -30,7 +30,7 @@ detailed documentation.
 
 You may read this module's implementation in its entirety at
 
-  perldoc -m json2yaml
+  perldoc -m jcat
 
 L<App::PipeFilter> has top-level documentation including a table of
 contents for all the libraries and binaries included in the project.
@@ -45,10 +45,10 @@ L<https://github.com/rcaputo/app-pipefilter>
 
 =head1 COPYRIGHT AND LICENSE
 
-json2yaml
+jcat
 is Copyright 2011 by Rocco Caputo.
 All rights are reserved.
-json2yaml
+jcat
 is released under the same terms as Perl itself.
 
 =cut

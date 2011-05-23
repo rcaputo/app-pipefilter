@@ -1,5 +1,57 @@
 #!/usr/bin/perl
-
 use App::PipeFilter::JsonMap;
+exit App::PipeFilter::JsonMap->new_with_options()->run();
 
-App::PipeFilter::JsonMap->new_with_options()->run();
+__END__
+
+=head1 NAME
+
+jmap - map input JSON fields to output JSON fields by renaming them
+
+=head1 SYNOPSIS
+
+Convert input fields "one" and "two" to uppercase versions on output:
+
+  jmap -i one -o ONE -i two -o TWO < input.json
+
+=head1 DESCRIPTION
+
+jmap(1) reads files sequentially, altering some or all of their field
+names before writing them to standard output or a named file.  It
+behaves like jcat(1) but renames fields in the process.
+
+jmap(1) inherits its --input, --output and --verbose flags from
+L<App::PipeFilter::Role::Flags::Standard>.
+See that module for more detailed documentation.
+
+jmap(1) inherits its -i and -o flags from L<App::PipeFilter::JsonMap>.
+See that module for more detailed documentation.
+
+=head1 SEE ALSO
+
+You may read this module's implementation in its entirety at
+
+  perldoc -m jmap
+
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and binaries included in the project.
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
+
+=head1 COPYRIGHT AND LICENSE
+
+jmap
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+jmap
+is released under the same terms as Perl itself.
+
+=cut
+
+# vim: ts=2 sw=2 expandtab
