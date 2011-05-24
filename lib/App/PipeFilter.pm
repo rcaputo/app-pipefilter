@@ -4,8 +4,9 @@ App::PipeFilter
 
 =head1 DESCRIPTION
 
-App::PipeFilter is a distribution of shell pipeline filters that mimic
-some of the standard UNIX tools but process structured data.
+App::PipeFilter is a distribution of shell pipeline filters designed
+to work with structured data like JSON rather than whitespace
+separated fields.
 
 For example, jcut is a simple version of cut(1) that understands JSON
 objects rather than whitespace separated fields.
@@ -27,7 +28,7 @@ objects rather than whitespace separated fields.
 The jsonpath filter supports more complex expressions using
 JSON::Path's variant of JSONPath.
 
-  % curl -s 'http://api.duckduckgo.com/?q=poe&o=json' |
+  curl -s 'http://api.duckduckgo.com/?q=poe&o=json' |
   jsonpath -o '$..Topics.*.FirstURL' -o '$..Topics.*.Text' |
   grep -i perl |
   jmap -i col0 -o url -i col1 -o title |
@@ -38,38 +39,30 @@ JSON::Path's variant of JSONPath.
 
 =head1 DESIGN GOAL
 
-Follow the UNIX convention of one record per line of text.  This
-ensures App::PipeFilter tools are compatible with many standard UNIX
-filters.  In the examples above, jcut and jsonpath output is piped
-through sort(1), uniq(1) and grep(1).
+App::PipeFilter utilities generally follow the UNIX convention of
+printing one record per line of text.  This maximizes compatibility
+with UNIX utilities like sort(1), uniq(1) and grep(1).
 
 =head1 PRO TIPS
 
-JSON isn't particularly concise, so put grep(1) and other filters that
-eliminate objects as early as possible in pipelines.
+JSON isn't particularly concise, so put grep(1), jcut(1) and other
+filters that eliminate data as early as possible in pipelines.
 
 =head1 SEE ALSO
 
-L<jcat> reads a JSON stream or one or more JSON files and writes
-another JSON stream or JSON file.
+L<jcat> - concatenate and print JSON files
 
-L<jcut> extracts fields from simple JSON objects.  It's modeled after
-cut(1), but the -k flags name JSON fields.
+L<jcut> - cut out selected portions of each JSON object in a file
 
-L<jmap> produces a JSON stream with specified fields renamed.
+L<jmap> - map input JSON fields to output JSON fields by renaming them
 
-L<json2yaml> converts a JSON stream or files into a YAML stream or
-file.  It's useful for viewing data vertically as well.
+L<json2yaml> - convert files of JSON objects into a stream of YAML objects
 
-L<jsonpath> extracts fields from complex JSON objects.  It's modeled
-after cut(1), but the -k flags describe JSON fields using JSON::Path
-expressions.
+L<jsonpath> - use JSON::Path to cut out selected portions of JSON objects
 
-L<jsort> sorts a JSON stream on key fields.  It's modeled after
-sort(1), but -k flags name key JSON fields to sort by.
+L<jsort> - sort input files of JSON objects on key fields
 
-L<mysql2json> converts mysql(1) batch output (-B flag) into a stream
-of JSON objects, one for each MySQL row.
+L<mysql2json> - convert mysql -B output to JSON object streams
 
 L<http://json.org/>
 

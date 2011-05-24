@@ -1,3 +1,54 @@
 #!/usr/bin/perl
 use App::PipeFilter::JsonSort;
 exit App::PipeFilter::JsonSort->new_with_options()->run();
+
+__END__
+
+=head1 NAME
+
+jsort - sort input files of JSON objects on key fields
+
+=head1 SYNOPSIS
+
+	jsort [-n] [-r] -k field_name [-k field_name] [--verbose] [file ...]
+
+=head1 DESCRIPTION
+
+Write a sorted concatenation of all input JSON objects to standard
+output.  Modeled after sort(1), except that key fields are specified
+by JSON names rather than field positions.
+
+The sort(1) utility is called upon to do most of the work.  The -n and
+-r flags are passed directly to it.
+
+=head1 SEE ALSO
+
+You may read this filter's implementation in its entirety at
+
+  perldoc -m jsort
+
+L<App::PipeFilter::JsonSort> implements this utility, including the
+behaviors of the -n, -r and -k flags.
+
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and utilities included in the project.
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
+
+=head1 COPYRIGHT AND LICENSE
+
+jsort
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+jsort
+is released under the same terms as Perl itself.
+
+=cut
+
+# vim: ts=2 sw=2 expandtab

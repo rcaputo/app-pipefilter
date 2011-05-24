@@ -24,8 +24,7 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::Role::Input::Json - parse JSON records from an input
-file or stream
+App::PipeFilter::Role::Input::Json - parse input as a stream of JSON records
 
 =head1 SYNOPSIS
 
@@ -36,6 +35,7 @@ file or stream
   extends 'App::PipeFilter::Generic';
 
   with qw(
+    App::PipeFilter::Role::Reader::Sysread
     App::PipeFilter::Role::Input::Json
     App::PipeFilter::Role::Output::Json
   );
@@ -45,13 +45,14 @@ file or stream
 =head1 DESCRIPTION
 
 App::PipeFilter::Role::Input::Json provides a decode_input() method that
-parses JSON.
+parses streams of JSON records.  It supports large chunked reads via
+L<App::PipeFilter::Role::Reader::Sysread>.
 
-L<App::PipeFilter::Generic> uses this method to determine the format
-of the data it will write.
+L<App::PipeFilter::Generic> uses decode_input() to determine the
+format of the data it is reading.
 
 L<App::PipeFilter::Generic::Json> is a generic filter that reads and
-writes JSON.  It extends App::PipeFilter::Generic with both
+writes JSON streams.  It extends App::PipeFilter::Generic with both
 App::PipeFilter::Role::Input::Json and
 L<App::PipeFilter::Role::Output::Json>.
 
@@ -62,7 +63,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Input::Json
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

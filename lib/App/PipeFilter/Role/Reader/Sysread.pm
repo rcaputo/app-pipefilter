@@ -35,15 +35,23 @@ chunks for speed
 =head1 DESCRIPTION
 
 App::PipeFilter::Role::Reader::Sysread implements a read_input()
-method that returns large chunks of input at a time.  This role is
-recommended whenever the input data source and stream format allow.
+method that returns large chunks of input at a time.  Input chunks are
+arbitrary; they do not honor the structure of the files being read.
 
 L<App::PipeFilter::Generic> uses read_input() to consume data from its
 current input filehandle.
 
-Some input sources and file formats work better with
-L<App::PipeFilter::Role::Reader::LineByLine>, although line-based
-input is usually slower.
+This role is faster than L<App::PipeFilter::Role::Reader::LineByLine>,
+but it may not work with all devices.  Some data formats may be easier
+to work with on a line-by-line basis.
+
+=head1 PUBLIC METHODS
+
+=head2 read_input FILEHANDLE, SCALAR_REF
+
+read_input() reads the next chunk of data from a FILEHANDLE using
+Perl's built-in sysread() function.  It appends this chunk of data to
+the buffer pointed at by a SCALAR_REF.  It returns sysread()'s result.
 
 =head1 SEE ALSO
 
@@ -52,10 +60,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Reader::Sysread
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
-
-The json_xs(1) utility can reformat JSON vertically as well, if you
-prefer JSON over YAML.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

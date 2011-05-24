@@ -38,14 +38,14 @@ object per line
 =head1 DESCRIPTION
 
 App::PipeFilter::Role::Output::Json provides an encode_output() method
-that serializes data into JSON for writing to an output file or
-stream.  Each line of output will contain one JSON record.
+that serializes data into JSON records for output.  Each line of
+output will contain one JSON record.
 
-L<App::PipeFilter::Generic> uses this method to determine the format
-of the data it will write.
+L<App::PipeFilter::Generic> uses encode_output() to determine the
+format of the data it will write.
 
 L<App::PipeFilter::Generic::Json> is a generic filter that reads and
-writes JSON.  It extends App::PipeFilter::Generic with both
+writes JSON streams.  It extends App::PipeFilter::Generic with both
 L<App::PipeFilter::Role::Input::Json> and
 App::PipeFilter::Role::Output::Json.
 
@@ -56,7 +56,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Output::Json
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

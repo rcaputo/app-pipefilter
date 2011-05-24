@@ -22,7 +22,7 @@ YAML
 
 =head1 SYNOPSIS
 
-Here is the json2yaml pipeline filter in its entirety:
+Here is the json2yaml(1) pipeline filter.
 
   #!/usr/bin/perl
   use App::PipeFilter::JsonToYaml;
@@ -30,16 +30,10 @@ Here is the json2yaml pipeline filter in its entirety:
 
 =head1 DESCRIPTION
 
-App::PipeFilter::JsonToYaml implements a pipeline filter that converts
-JSON objects into a stream of YAML structures.  Each YAML structure
-represents a single JSON object.
-
-The YAML stream is vertical, with one field per line, whereas most of
-the JSON filters write entire objects per line.
-
-This filter is often used as the equivalent of mysql(1)'s \G command:
-
-  ego (\G) Send command to mysql server, display result vertically.
+App::PipeFilter::JsonToYaml implements the json2yaml(1) pipeline
+filter.  It's modeled after cat(1), except that the output file format
+differs from the input format.  The data's semantics remain identical,
+formats permitting.
 
 =head1 SEE ALSO
 
@@ -47,11 +41,15 @@ You may read this module's implementation in its entirety at
 
   perldoc -m App::PipeFilter::JsonToYaml
 
-L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+This module doesn't implement anything of its own.  It customizes
+L<App::PipeFilter::Generic> with the following roles:
+L<App::PipeFilter::Role::Reader::Sysread>,
+L<App::PipeFilter::Role::Input::Json>,
+L<App::PipeFilter::Role::Transform::None> and
+L<App::PipeFilter::Role::Output::Yaml>.
 
-The json_xs(1) utility can reformat JSON vertically as well, if you
-prefer JSON over YAML.
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

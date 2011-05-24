@@ -46,9 +46,45 @@ __END__
 
 =head1 NAME
 
+App::PipeFilter::JsonMap - map input fields to output fields by
+renaming them
+
 =head1 SYNOPSIS
 
+  #!/usr/bin/perl
+  use App::PipeFilter::JsonMap;
+  exit App::PipeFilter::JsonMap->new_with_options()->run();
+
 =head1 DESCRIPTION
+
+App::PipeFilter::JsonMap implements the jmap(1) pipeline filter.  It
+renames JSON object fields by mapping input field names to new ones on
+output.
+
+This class subclasses L<App::PipeFilter::Generic::Json>.
+
+=head1 PUBLIC ATTRIBUTES
+
+=head2 i
+
+The i() attribute holds an arrayref of one or more input fields to be
+renamed.  All other input fields will be present in the resulting
+output without being renamed.  MooseX::Getopt sets i() to the values
+of the -i options from the command line.
+
+=head2 o
+
+The o() attribute holds an arrayref of the new names of the fields
+from i().  Both i() and o() must have the same number of field names.
+MooseX::Getopt sets o() to the values of the -o options from the
+command line.
+
+=head1 PUBLIC METHODS
+
+=head2 transform
+
+The transform() method renames the fields named in the i() attribute
+to the names found in the o() attribute.
 
 =head1 SEE ALSO
 
@@ -57,7 +93,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::JsonMap
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

@@ -6,8 +6,9 @@ NAME
        App::PipeFilter
 
 DESCRIPTION
-       App::PipeFilter is a distribution of shell pipeline filters that mimic
-       some of the standard UNIX tools but process structured data.
+       App::PipeFilter is a distribution of shell pipeline filters designed to
+       work with structured data like JSON rather than whitespace separated
+       fields.
 
        For example, jcut is a simple version of cut(1) that understands JSON
        objects rather than whitespace separated fields.
@@ -29,7 +30,7 @@ DESCRIPTION
        The jsonpath filter supports more complex expressions using
        JSON::Path’s variant of JSONPath.
 
-         % curl −s 'http://api.duckduckgo.com/?q=poe&o=json' |
+         curl −s 'http://api.duckduckgo.com/?q=poe&o=json' |
          jsonpath −o '$..Topics.*.FirstURL' −o '$..Topics.*.Text' |
          grep −i perl |
          jmap −i col0 −o url −i col1 −o title |
@@ -39,35 +40,42 @@ DESCRIPTION
          url: http://duckduckgo.com/Perl_Object_Environment
 
 DESIGN GOAL
-       Follow the UNIX convention of one record per line of text.  This
-       ensures App::PipeFilter tools are compatible with many standard UNIX
-       filters.  In the examples above, jcut and jsonpath output is piped
-       through sort(1), uniq(1) and grep(1).
+       App::PipeFilter utilities generally follow the UNIX convention of
+       printing one record per line of text.  This maximizes compatibility
+       with UNIX utilities like sort(1), uniq(1) and grep(1).
 
 PRO TIPS
-       JSON isn’t particularly concise, so put grep(1) and other filters that
-       eliminate objects as early as possible in pipelines.
+       JSON isn’t particularly concise, so put grep(1), jcut(1) and other
+       filters that eliminate data as early as possible in pipelines.
 
 SEE ALSO
-       jcut − Extract one or more named fields from JSON input.
+       jcat − concatenate and print JSON files
 
-       jmap − Rename one or more named fields from JSON input.
+       jcut − cut out selected portions of each JSON object in a file
 
-       json2yaml − Convert JSON input records to YAML output records.  Some
-       people may find YAML output to be more readable.
+       jmap − map input JSON fields to output JSON fields by renaming them
 
-       jsonpath − Like jcut, but fields are described using JSON::Path’s
-       variant of JSONPath.
+       json2yaml − convert files of JSON objects into a stream of YAML objects
 
-       jsort − Sort JSON input on one or more key fields.
+       jsonpath − use JSON::Path to cut out selected portions of JSON objects
 
-       myswl2json − Convert mysql(1) batch output (−B) into JSON records.
+       jsort − sort input files of JSON objects on key fields
 
-       http://json.org/
+       mysql2json − convert mysql −B output to JSON object streams
 
-       http://search.cpan.org/perldoc?JSON::Path
+       <http://json.org/>
 
-       http://goessner.net/articles/JsonPath/
+       <http://search.cpan.org/perldoc?JSON::Path>
+
+       <http://goessner.net/articles/JsonPath/>
+
+BUGS
+       https://rt.cpan.org/Public/Dist/Display.html?Name=App−PipeFilter
+       <https://rt.cpan.org/Public/Dist/Display.html?Name=App‐PipeFilter>
+
+REPOSITORY
+       https://github.com/rcaputo/app−pipefilter
+       <https://github.com/rcaputo/app‐pipefilter>
 
 COPYRIGHT and LICENSE
        App::PipeFilter is Copyright 2011 by Rocco Caputo.  All rights are
@@ -76,4 +84,4 @@ COPYRIGHT and LICENSE
 
 
 
-perl v5.10.0                      2011‐05‐21                App::PipeFilter(3)
+perl v5.10.0                      2011‐05‐23                App::PipeFilter(3)

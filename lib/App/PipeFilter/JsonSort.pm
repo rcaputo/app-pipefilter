@@ -76,7 +76,7 @@ JSON fields
 
 =head1 SYNOPSIS
 
-Here is the jsort pipeline filter in its entirety:
+Here is the jsort(1) pipeline filter.
 
   #!/usr/bin/perl
   use App::PipeFilter::JsonSort;
@@ -88,22 +88,22 @@ App::PipeFilter::JsonSort implements a pipeline filter similar to
 sort(1), except that the -k flags describe JSON fields rather than
 whitespace-separated columns.
 
-This filter provides additional attributes to better emulate sort(1).
-These attributes are populated from the command line by
-MooseX::Getopt.
+This filter currently provides a small subset of the options that
+sort(1) does.
 
-=head1 ATTRIBUTES
+=head1 PUBLIC ATTRIBUTES
 
 This filter uses sort(1) and cut(1) to do most of its work.
 
 =head2 k
 
-The k attribute (set by the -k command line flag) names one or more
-key JSON fields to sort by.
+The k() attribute names one or more key JSON fields to sort by.  It is
+analogous to the -k flag for sort(1).  MooseX::Getopt sets k() to the
+values of the -k options from the command line.
 
 =head2 n
 
-The boolean n attribute (set by the -n command line flag) tells
+The boolean n() attribute (set by the -n command line flag) tells
 App::PipeFilter::JsonSort to sort numerically.  It sorts
 lexicographically by default.
 
@@ -111,10 +111,24 @@ If specified, -n is passed to sort(1).
 
 =head2 r
 
-The boolean r attribute (set by the -r command line flag) instructs
+The boolean r() attribute (set by the -r command line flag) instructs
 App::PipeFilter::JsonSort to reverse the sort.
 
 If spedified, -r is passed to sort(1).
+
+=head1 PUBLIC METHODS
+
+=head2 encode_output
+
+encode_output() prepeands JSON records with the values of their key
+fields in tab-separated form.  This output will be piped through
+sort(1) to do the actual sorting, and through cut(1) to remove the
+tab-separated sorting columns.
+
+=head2 open_output
+
+open_output() opens output through sort(1) and cut(1).  It's a huge
+cheat, but it works for simple cases.
 
 =head1 SEE ALSO
 
@@ -122,8 +136,13 @@ You may read this module's implementation in its entirety at
 
   perldoc -m App::PipeFilter::JsonSort
 
+This class subclasses L<App::PipeFilter::Generic::Generic>.  It is
+customized with L<App::PipeFilter::Role::Reader::Sysread>,
+L<App::PipeFilter::Role::Input::Json> and
+L<App::PipeFilter::Role::Transform::None>.
+
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

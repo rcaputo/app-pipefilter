@@ -10,31 +10,28 @@ jmap - map input JSON fields to output JSON fields by renaming them
 
 =head1 SYNOPSIS
 
-Convert input fields "one" and "two" to uppercase versions on output:
-
-  jmap -i one -o ONE -i two -o TWO < input.json
+  jmap -i original_name -o new_name [-i orig -o new ...] [file ...]
 
 =head1 DESCRIPTION
 
-jmap(1) reads files sequentially, altering some or all of their field
-names before writing them to standard output or a named file.  It
-behaves like jcat(1) but renames fields in the process.
+jmap(1) behaves like jcat(1) but renames fields in the process of
+concatenating input files.  jmap(1) reads files sequentially, altering
+some or all of their field names before writing them to standard
+output.  jmap(1) can rename multiple fields by repeating its -i and -o
+flags.
 
-jmap(1) inherits its --input, --output and --verbose flags from
-L<App::PipeFilter::Role::Flags::Standard>.
-See that module for more detailed documentation.
-
-jmap(1) inherits its -i and -o flags from L<App::PipeFilter::JsonMap>.
+The -i and -o flags' unique behavior is implemented in
+L<App::PipeFilter::JsonMap>.
 See that module for more detailed documentation.
 
 =head1 SEE ALSO
 
-You may read this module's implementation in its entirety at
+You may read this utility's implementation in its entirety at
 
   perldoc -m jmap
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

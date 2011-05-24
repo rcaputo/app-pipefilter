@@ -13,7 +13,7 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::Role::Transform::None - do no structural transoformation
+App::PipeFilter::Role::Transform::None - don't transform data at all
 
 =head1 SYNOPSIS
 
@@ -34,12 +34,11 @@ one object per line.
 App::PipeFilter::Role::Transform::None provides a transform() method
 that returns its parameters without altering them.
 
-L<App::PipeFilter::Generic> uses transform() to modify the contents
-and/or semantics of streams being filtered.
+L<App::PipeFilter::Generic> uses transform() to modify the contents of
+streams being filtered.
 
-The "None" transform is commonly used in filters that translate from
-one file or stream format to another without altering the data's
-semantics.
+The "None" transform is commonly used in filters that translate data
+from one file or stream format to another without changing it.
 
 =head1 SEE ALSO
 
@@ -48,7 +47,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Transform::None
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

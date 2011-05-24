@@ -30,12 +30,11 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::JsonCut - return certain fields from a JSON stream,
-like cut(1)
+App::PipeFilter::JsonCut - return specified fields from a JSON stream
 
 =head1 SYNOPSIS
 
-Here is the implementation of the jcut(1) pipe filter.
+Here is the jcut(1) pipeline filter.
 
   #!/usr/bin/perl
   use App::PipeFilter::JsonCut;
@@ -43,26 +42,27 @@ Here is the implementation of the jcut(1) pipe filter.
 
 =head1 DESCRIPTION
 
-App::PipeFilter::JsonCut extracts named fields from a stream of simple
-JSON objects.  It is modeled after the UNIX cut(1) pipeline filter.
+App::PipeFilter::JsonCut implements the jcut(1) pipeline filter.  It's
+modeled after the UNIX cut(1) utility.
+Please see jcut(1) for usage instructions.
 
-JSON is relatively verbose compared to the whitespace-separated
-formats that UNIX tools are meant to deal with.  It's often beneficial
-to jcut(1) the fields you need early in a pipeline chain.
+This class subclasses L<App::PipeFilter::Generic::Json>.
 
-App::PipeFilter::JsonCut extends L<App::PipeFilter::Generic::Json>.
-The column extraction logic is implemented in a custom transform()
-method.
-
-=head1 ATTRIBUTES
-
-This filter defines one additional attribute.
+=head1 PUBLIC ATTRIBUTES
 
 =head2 o
 
-The o attribute (set by the -o command line flag) names one or more
-JSON fields to include in the output stream.  All others fields will
-be discarded.
+The o() attribute specifies one or more fields to extract from input
+and write to output.  All other fields will be discarded.
+MooseX::Getopt sets o() to the values of the -o options from the
+command line.
+
+=head1 PUBLIC METHODS
+
+=head2 transform
+
+The transform() method iterates over its input and returns new records
+composed of only the fields named in the o() attribute.
 
 =head1 SEE ALSO
 
@@ -74,10 +74,11 @@ You may read this module's implementation in its entirety at
 
 L<App::PipeFilter::JsonPath> is a similar pipeline filter that
 understands JSON::Path expressions.  Evaluating JSON::Path expressions
-incurs noticeable overhead for large data sets.
+incurs noticeable overhead for large data sets, so use jcut(1)
+whenever possible.
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

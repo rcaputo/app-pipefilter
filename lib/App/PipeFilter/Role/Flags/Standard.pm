@@ -4,22 +4,20 @@ use Moose::Role;
 
 with 'MooseX::Getopt';
 
-has input => (
-  is            => 'rw',
-  isa           => 'ArrayRef',
-  default       => sub { [ '-' ] },
-  traits        => ['Array'],
-  documentation => 'input file names (zero or more, default is standard input)',
-  handles       => {
-    next_input_file => 'shift',
+has _input_files => (
+  is      => 'rw',
+  isa     => 'ArrayRef',
+  lazy    => 1,
+  traits  => ['Array'],
+  default => sub {
+    my $self = shift();
+    my @leftovers = @{$self->extra_argv()};
+    @leftovers = ("-") unless @leftovers;
+    return \@leftovers;
   },
-);
-
-has output => (
-  is            => 'rw',
-  isa           => 'Str',
-  default       => '-',
-  documentation => 'output file name (zero or one, default is standard output)',
+  handles => {
+    next_input_file => 'shift'
+  },
 );
 
 has verbose => (
@@ -58,21 +56,7 @@ App::PipeFilter::Role::Flags::Standard provides standard pipeline
 filter attributes and consumes MooseX::Getopt to populate them from
 command line arguments.
 
-=head1 ATTRIBUTES
-
-=head2 input
-
-The input attribute (set by the --input command line flag) specifies
-zero or more file or device names from which input data will be read.
-It defaults to '-', which causes L<App::PipeFilter::Generic> to read
-from standard input.
-
-=head2 output
-
-The output attribute (set by the --output command line flag) specifies
-zero or one file or device name into which output will be written.  It
-defaults to '-', which causes L<App::PipeFilter::Generic> to write to
-standard output.
+=head1 PUBLIC ATTRIBUTES
 
 =head2 verbose
 
@@ -82,6 +66,13 @@ error.
 
 Use with caution.  Some pipeline filters may use standard error for
 their own purposes.
+
+=head1 PUBLIC METHODS
+
+=head2 next_input_file
+
+next_input_file() returns the next input file name from the command
+line.  If no file was named, it returns "-" representing STDIN.
 
 =head1 SEE ALSO
 

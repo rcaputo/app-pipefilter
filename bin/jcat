@@ -6,34 +6,28 @@ __END__
 
 =head1 NAME
 
-jcat - catenate JSON streams
+jcat - concatenate and print JSON files
 
 =head1 SYNOPSIS
 
-  jcat < eg/sample.json
-
-  jcat --input eg/sample.json --output new.json
-
-  jcat --input eg/sample.json --output new.json --verbose
+  jcat [--verbose] [file ...]
 
 =head1 DESCRIPTION
 
-jcat(1) reads files sequentially, writing them to standard output or a
-named file.  JSON records are written one per line regardless of their
-input configuration.
-
-jcat(1) inherits its --input, --output and --verbose flags from
-L<App::PipeFilter::Role::Flags::Standard>.  See that module for more
-detailed documentation.
+jcat(1) reads files of JSON objects sequentially, writing them to
+standard output one object per line.  Multiline JSON objects are
+flattened to single lines for output.
 
 =head1 SEE ALSO
 
-You may read this module's implementation in its entirety at
+You may read this utility's implementation in its entirety at
 
   perldoc -m jcat
 
+L<App::PipeFilter::JsonCat> implements this utility.
+
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

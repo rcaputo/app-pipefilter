@@ -6,40 +6,32 @@ __END__
 
 =head1 NAME
 
-jcut - cut out selected portions of each JSON object in a file
+jsonpath - use JSON::Path to cut out selected portions of JSON objects
 
 =head1 SYNOPSIS
 
-  jsonpath -o json_path_1 [-o json_path_2 ...] < input.json
-
-  jcut -o json_path_1 --input eg/sample.json
-
-  jcut -o json_path_1 --input eg/sample.json --output new.json
+  jsonpath [--verbose] -o json_path_1 [-o json_path_2 ...] [file ...]
 
 =head1 DESCRIPTION
 
 jsonpath(1) cuts out selected portions of each JSON record and writes
-them to standard output or a named file.  Fields are selected using
-JSON::Path expressions, which are a Perl-centric variant of JSONPath.
+them to standard output.  Fields are selected using JSON::Path
+expressions, which are a Perl-centric variant of JSONPath.  Multiple
+fields may be specified, one per -o flag.
 
-Multiple fields may be specified with additional -o flags.
-
-JSON::Path expressions make terrible field names, so output fields are
-named col#, beginning with col0.  jmap(1) may be used to give each
-output field a more useful name.
-
-jsonpath(1) inherits its --input, --output and --verbose flags from
-L<App::PipeFilter::Role::Flags::Standard>.
-See that module for more detailed documentation.
-
-jsonpath(1) inherits its -o flag from L<App::PipeFilter::JsonPath>.
-See that module for more detailed documentation.
+Output fields are named col#, where the # is the numeric position of
+the corresponding JSON::Path expression on the command line.  The
+first column is col0.  jmap(1) may be used to give each output field a
+more useful name.
 
 =head1 SEE ALSO
 
-You may read this module's implementation in its entirety at
+You may read this utility's implementation in its entirety at
 
-  perldoc -m jcut
+  perldoc -m jsonpath
+
+L<App::PipeFilter::JsonPath> implements this utility, including the
+behavior of the -o flag.
 
 L<App::PipeFilter> has top-level documentation including a table of
 contents for all the libraries and binaries included in the project.
@@ -54,10 +46,10 @@ L<https://github.com/rcaputo/app-pipefilter>
 
 =head1 COPYRIGHT AND LICENSE
 
-jcut
+jsonpath
 is Copyright 2011 by Rocco Caputo.
 All rights are reserved.
-jcut
+jsonpath
 is released under the same terms as Perl itself.
 
 =cut

@@ -13,8 +13,8 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::Role::Opener::GenericIO - generic method to open
-output files, streams or standard output
+App::PipeFilter::Role::Opener::GenericIO - generic methods to open
+input and output filesj
 
 =head1 SYNOPSIS
 
@@ -48,7 +48,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Opener::GenericIO
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 
@@ -63,7 +63,7 @@ L<https://github.com/rcaputo/app-pipefilter>
 App::PipeFilter::Role::Opener::GenericIO
 is Copyright 2011 by Rocco Caputo.
 All rights are reserved.
-App::PipeFilter::JsonCat
+App::PipeFilter::Role::Opener::GenericIO
 is released under the same terms as Perl itself.
 
 =cut

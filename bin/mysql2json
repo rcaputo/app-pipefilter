@@ -4,24 +4,56 @@ exit App::PipeFilter::MysqlToJson->new_with_options()->run();
 
 __END__
 
-mysql -u user -password -h 10.0.0.5 database \
-  -e 'select crontab_id, task_id from crontab' -B \
-  | ./bin/mysql2json \
-  | ./bin/jsort -k task_id -rn
+=head1 NAME
 
-{"crontab_id":"102","task_id":"701"}
-{"crontab_id":"101","task_id":"700"}
-{"crontab_id":"100","task_id":"650"}
-{"crontab_id":"8","task_id":"599"}
-{"crontab_id":"14","task_id":"38"}
-{"crontab_id":"12","task_id":"36"}
-{"crontab_id":"10","task_id":"35"}
-{"crontab_id":"11","task_id":"34"}
-{"crontab_id":"9","task_id":"33"}
-{"crontab_id":"7","task_id":"10"}
-{"crontab_id":"6","task_id":"9"}
-{"crontab_id":"5","task_id":"8"}
-{"crontab_id":"4","task_id":"7"}
-{"crontab_id":"3","task_id":"6"}
-{"crontab_id":"2","task_id":"5"}
-{"crontab_id":"1","task_id":"4"}
+mysql2json - convert mysql -B output to JSON object streams
+
+=head1 SYNOPSIS
+
+  mysql -B -u user -password -h 10.0.0.5 database \
+    -e 'select crontab_id, task_id from crontab' | \
+		mysql2json | jsort -k task_id -rn | head -5
+
+=head1 DESCRIPTION
+
+mysql2json(1) reads mysql(1) batch output and writes JSON objects, one
+per line, corresponding to each database row.
+
+The SYNOPSIS example produces something like this:
+
+	{"crontab_id":"102","task_id":"701"}
+	{"crontab_id":"101","task_id":"700"}
+	{"crontab_id":"100","task_id":"650"}
+	{"crontab_id":"8","task_id":"599"}
+	{"crontab_id":"14","task_id":"38"}
+
+=head1 SEE ALSO
+
+You may read this utility's implementation in its entirety at
+
+  perldoc -m mysql2json
+
+L<App::PipeFilter::MysqlToJson> implements this utility.
+
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and utilities included in the project.
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
+
+=head1 COPYRIGHT AND LICENSE
+
+mysql2json
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+mysql2json
+is released under the same terms as Perl itself.
+
+=cut
+
+# vim: ts=2 sw=2 expandtab

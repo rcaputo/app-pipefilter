@@ -6,31 +6,36 @@ __END__
 
 =head1 NAME
 
-json2yaml - convert a stream of JSON objects into a stream of YAML
-objects
+json2yaml - convert files of JSON objects into a stream of YAML objects
 
 =head1 SYNOPSIS
 
-  json2yaml < eg/sample.json
-
-  json2yaml --input eg/sample.json --output new.yaml
-
-  json2yaml --input eg/sample.json --output new.yaml --verbose
+  json2yaml [--verbose] [file ...]
 
 =head1 DESCRIPTION
 
 json2yaml(1) reads files sequentially, writing them as YAML to
-standard output or a named file.
+standard output.
 
-json2yaml(1) inherits its --input, --output and --verbose flags from
-L<App::PipeFilter::Role::Flags::Standard>.  See that module for more
-detailed documentation.
+=head1 PRO TIPS
+
+The YAML stream is vertical, with one field per line, whereas most of
+the JSON filters write entire objects per line.
+
+This filter is often used as the equivalent of mysql(1)'s \G command:
+
+  ego (\G) Send command to mysql server, display result vertically.
+
+The json_xs(1) utility can reformat JSON vertically as well, if you
+prefer JSON over YAML.
 
 =head1 SEE ALSO
 
-You may read this module's implementation in its entirety at
+You may read this utility's implementation in its entirety at
 
   perldoc -m json2yaml
+
+L<App::PipeFilter::JsonToYaml> implements this utility.
 
 L<App::PipeFilter> has top-level documentation including a table of
 contents for all the libraries and binaries included in the project.

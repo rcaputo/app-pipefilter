@@ -16,13 +16,9 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::Generic::Json - a generic JSON pipe filter
+App::PipeFilter::Generic::Json - a generic JSON pipeline filter
 
 =head1 SYNOPSIS
-
-Here is the class that makes up the jcat(1) utility.  It reads JSON,
-does no transformations on the deserialized data, and writes new JSON
-one object per line.
 
   package App::PipeFilter::JsonCat;
 
@@ -34,16 +30,19 @@ one object per line.
 
 =head1 DESCRIPTION
 
-App::PipeFilter::Generic::Json is a generic JSON pipe filter.  It
-extends L<App::PipeFilter::Generic> which does most of the work.  It
-consumes L<App::PipeFilter::Role::Reader::Sysread> to read input in
-large chunks.  It consumes L<App::PipeFilter::Role::Input::Json> to
-parse the input as JSON and L<App::PipeFilter::Role::Output::Json> to
-write output as JSON.
+App::PipeFilter::Generic::Json is a generic base class for pipeline
+filters that read and write streams of JSON objects.
 
-Subclasses usually implement a transform() sub or consume a role that
-does.  L<App::PipeFilter::JsonCat> consumes a role that does no
-transformation.
+It subclasses L<App::PipeFilter::Generic> and customizes it with the
+following roles: L<App::PipeFilter::Role::Reader::Sysread>,
+L<App::PipeFilter::Role::Input::Json> and
+L<App::PipeFilter::Role::Output::Json>.
+
+Further customization is done by implementing a transform() method or
+consuming a role that implements one.  L<App::PipeFilter::JsonCat>
+consumes a role that does no transformation.
+L<App::PipeFilter::JsonCut> implements a transform() method that
+extracts certain fields.
 
 Additional customization is possible by overriding or extending the
 generic classes' methods in the usual ways.
@@ -54,8 +53,11 @@ You may read this module's implementation in its entirety at
 
   perldoc -m App::PipeFilter::Generic::Json
 
+L<App::PipeFilter::Generic> documents all the methods provided by the
+base class and roles.
+
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

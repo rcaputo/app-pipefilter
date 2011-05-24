@@ -21,8 +21,8 @@ __END__
 
 =head1 NAME
 
-App::PipeFilter::Role::Opener::GenericIO - generic method to open
-input files, streams or standard input
+App::PipeFilter::Role::Opener::GenericInput - a common method to open
+input files
 
 =head1 SYNOPSIS
 
@@ -41,8 +41,12 @@ input files, streams or standard input
 
 App::PipeFilter::Role::Opener::GenericInput provides a generic
 open_input() method to open named input files, devices or streams.  It
-opens STDIN in the case wehre the input file is named "-" (which is
-often the default).
+opens STDIN when the input file is named "-" (which is often the
+default).
+
+L<App::PipeFilter::Generic> uses open_input() to open the input files
+specified on the command line.  Opening files is done in a dedicated
+method so it may be augmented or overridden in subclasses.
 
 =head1 SEE ALSO
 
@@ -51,7 +55,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Opener::GenericInput
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 
@@ -66,7 +70,7 @@ L<https://github.com/rcaputo/app-pipefilter>
 App::PipeFilter::Role::Opener::GenericInput
 is Copyright 2011 by Rocco Caputo.
 All rights are reserved.
-App::PipeFilter::JsonCat
+App::PipeFilter::Role::Opener::GenericInput
 is released under the same terms as Perl itself.
 
 =cut

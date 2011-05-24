@@ -42,10 +42,20 @@ App::PipeFilter::Role::Reader::LineByLine implements a read_input()
 method that returns one line of input at a time.
 
 L<App::PipeFilter::Generic> uses read_input() to consume data from its
-current input filehandle.  Some input sources and file formats work
-better with line-by-line input, although
-L<App::PipeFitler::Role::Reader::Sysread> is generally faster when
-it's available.
+current input filehandle.
+
+This role is recommended whenever the input data source or stream
+format are not easy to parse in chunks.  Classes should consume
+L<App::PipeFilter::Role::Reader::Sysread> when possible since it is
+often faster.
+
+=head1 PUBLIC METHODS
+
+=head2 read_input FILEHANDLE, SCALAR_REF
+
+read_input() reads the next line from a FILEHANDLE and appends it to
+the buffer pointed at by a SCALAR_REF.  It returns true if it read
+something, or false if it reached the end of file.
 
 =head1 SEE ALSO
 
@@ -54,10 +64,7 @@ You may read this module's implementation in its entirety at
   perldoc -m App::PipeFilter::Role::Reader::LineByLine
 
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
-
-The json_xs(1) utility can reformat JSON vertically as well, if you
-prefer JSON over YAML.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

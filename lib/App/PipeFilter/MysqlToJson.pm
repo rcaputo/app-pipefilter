@@ -26,19 +26,10 @@ before filter_file => sub {
 sub decode_input {
   my ($self, $input_ref) = @_;
   chomp($$input_ref);
-  return( [ split /\t/, $$input_ref ] );
-}
 
-sub encode_output {
-  my $self = shift();
-
-  my @fields = @{$self->_fields()};
-
-  return map {
-    my %sortable;
-    @sortable{@fields} = @$_;
-    encode_json(\%sortable) . "\n";
-  } @_;
+  my %row;
+  @row{@{$self->_fields()}} = split /\t/, $$input_ref;
+  return \%row;
 }
 
 1;
@@ -51,7 +42,7 @@ App::PipeFilter::MysqlToJson - translate mysql batch output to JSON
 
 =head1 SYNOPSIS
 
-Here is the mysql2json pipeline filter in its entirety:
+Here is the mysql2json(1) pipeline filter.
 
   #!/usr/bin/perl
   use App::PipeFilter::MysqlToJson;
@@ -59,21 +50,39 @@ Here is the mysql2json pipeline filter in its entirety:
 
 =head1 DESCRIPTION
 
-App::PipeFilter::MysqlToJson implements a pipeline filter that
-converts mysql batch output into a stream of JSON objects, one per
-output line.  Each JSON object represents a single MySQL row.
+App::PipeFilter::MysqlToJson implements the mysql2json(1) pipeline
+filter.  Please see mysql2json(1) for usage instructions.
+
+This module reads mysql(1) batch output (via the -B option) and
+produces a single JSON object per MySQL row.
 
 Mysql batch output is produced by the mysql(1) utility's -B flag.
 
-  mysql -B -e '
-    select inet_b2a(exporter_id) as exporter,
-    unix_timestamp(modified_ts) as ts
-    from plixer.exporters
-  ' | ./bin/mysql2json
+  mysql -B -u user -password -h 10.0.0.5 database \
+    -e 'select crontab_id, task_id from crontab' | \
+		mysql2json | jsort -k task_id -rn | head -5
 
-Produces output like this:
+Output may look like this:
 
-  {"ts":"1305915274","exporter":"10.0.0.2"}
+	{"crontab_id":"102","task_id":"701"}
+	{"crontab_id":"101","task_id":"700"}
+	{"crontab_id":"100","task_id":"650"}
+	{"crontab_id":"8","task_id":"599"}
+	{"crontab_id":"14","task_id":"38"}
+
+=head1 PUBLIC METHODS
+
+=head2 decode_input
+
+App::PipeFilter::MysqlToJson's decode_input() method parses mysql(1)
+tab-separated rows into Perl data structures.  Field names are
+extracted from the first line of the mysql(1) batch output.
+
+=head2 filter_file (before)
+
+mysql(1) batch output is tab-separated values.  The first line of
+output contains column names, which are read by code that runs before
+filter_file().
 
 =head1 SEE ALSO
 
@@ -81,8 +90,13 @@ You may read this module's implementation in its entirety at
 
   perldoc -m App::PipeFilter::MysqlToJson
 
+App::PipeFilter::MysqlToJson subclasses L<App::PipeFilter::Generic>.
+It consumes L<App::PipeFilter::Role::Reader::LineByLine>,
+L<App::PipeFilter::Role::Output::Json> and
+L<App::PipeFilter::Role::Transform::None>
+
 L<App::PipeFilter> has top-level documentation including a table of
-contents for all the libraries and binaries included in the project.
+contents for all the libraries and utilities included in the project.
 
 =head1 BUGS
 

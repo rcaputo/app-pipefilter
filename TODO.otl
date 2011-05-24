@@ -1,30 +1,81 @@
-[_] 30% Requirements for CPAN 1.000 release
-	[X] 100% Support multiline JSON input using JSON::XS's incremental parser.
-	[X] 100% Read input in large chunks, parsing incrementally.
-	[X] 100% Rename jpath to jsonpath.
-		Open the jpath name for JPath, which is something different.
-		http://bluelinecity.com/software/jpath/
-	[_] 0% Document the libraries.
-		[_] 0% First draft.
-	[_] 0% Document the new Reader roles.
-		[_] 0% Go back and make sure the changes for Reader roles are properly documented.
-		[_] 0% Revise examples since the code changed significantly.
-	[_] 0% Document the new Opener roles.
-		[_] 0% Document App::PipeFilter::Role::Opener::GenericIO.
-		[_] 0% Document App::PipeFilter::Role::Opener::GenericInput.
-		[_] 0% Document App::PipeFilter::Role::Opener::GenericOutput.
-		[_] 0% Document the use of these Opener roles.
-	[_] 0% Document the executables.
-		[_] 0% Test the executables.
-		[_] 0% Use command line test cases as examples.
-	[_] 0% Document =head1 METHODS for each library.
-	[_] 0% Test dzil.ini.
-	[_] 0% Clean up after failed Pod::Weaver experiment.
-[_] 50% Additional features
-	[X] 100% Allow -o to be JSON::Path descriptions.
-		Implemented jsonpath that acts like jcut but using JSONPath.
-		http://goessner.net/articles/JsonPath/
-	[_] 0% A jcut implementation using JSON:Select.
-		[_] 0% Find or write a Perl implementation or bindings for JSON::Select.
-			http://jsonselect.org/
-		[_] 0% Wrap a jsonselect app around it.
+[_] 61% Stable.
+	[_] 90% Requirements for CPAN 1.000 release
+		[X] 100% Support multiline JSON input using JSON::XS's incremental parser.
+		[X] 100% Read input in large chunks, parsing incrementally.
+		[X] 100% Rename jpath to jsonpath.
+			Open the jpath name for JPath, which is something different.
+			http://bluelinecity.com/software/jpath/
+		[X] 100% Document the libraries.
+			[X] 100% First draft utilities.
+			[X] 100% First draft modules.
+				[X] 100% lib/App/PipeFilter/Generic/Json.pm
+				[X] 100% lib/App/PipeFilter/Generic.pm
+				[X] 100% lib/App/PipeFilter/JsonCat.pm
+				[X] 100% lib/App/PipeFilter/JsonCut.pm
+				[X] 100% lib/App/PipeFilter/JsonMap.pm
+				[X] 100% lib/App/PipeFilter/JsonPath.pm
+				[X] 100% lib/App/PipeFilter/JsonSort.pm
+				[X] 100% lib/App/PipeFilter/JsonToYaml.pm
+				[X] 100% lib/App/PipeFilter/MysqlToJson.pm
+				[X] 100% lib/App/PipeFilter/Role/Flags/Standard.pm
+				[X] 100% lib/App/PipeFilter/Role/Input/Json.pm
+				[X] 100% lib/App/PipeFilter/Role/Opener/GenericInput.pm
+				[X] 100% lib/App/PipeFilter/Role/Opener/GenericIO.pm
+				[X] 100% lib/App/PipeFilter/Role/Opener/GenericOutput.pm
+				[X] 100% lib/App/PipeFilter/Role/Output/Json.pm
+				[X] 100% lib/App/PipeFilter/Role/Output/Yaml.pm
+				[X] 100% lib/App/PipeFilter/Role/Reader/LineByLine.pm
+				[X] 100% lib/App/PipeFilter/Role/Reader/Sysread.pm
+				[X] 100% lib/App/PipeFilter/Role/Transform/None.pm
+				[X] 100% lib/App/PipeFilter.pm
+			[X] 100% End of DESCRIPTION description of the classes & roles it uses.
+				[X] 100% lib/App/PipeFilter/Generic/Json.pm
+				[X] 100% lib/App/PipeFilter/Generic.pm
+				[X] 100% lib/App/PipeFilter/JsonCat.pm
+				[X] 100% lib/App/PipeFilter/JsonCut.pm
+				[X] 100% lib/App/PipeFilter/JsonMap.pm
+				[X] 100% lib/App/PipeFilter/JsonPath.pm
+				[X] 100% lib/App/PipeFilter/JsonSort.pm
+				[X] 100% lib/App/PipeFilter/JsonToYaml.pm
+				[X] 100% lib/App/PipeFilter/MysqlToJson.pm
+				[X] 100% lib/App/PipeFilter/Role/Flags/Standard.pm
+				[X] 100% lib/App/PipeFilter/Role/Opener/GenericIO.pm
+				[X] 100% lib/App/PipeFilter/Role/Output/Json.pm
+				[X] 100% lib/App/PipeFilter/Role/Output/Yaml.pm
+				[X] 100% lib/App/PipeFilter/Role/Reader/LineByLine.pm
+				[X] 100% lib/App/PipeFilter/Role/Reader/Sysread.pm
+				[X] 100% lib/App/PipeFilter/Role/Transform/None.pm
+			[X] 100% Remove ./bin from examples.
+		[X] 100% Document the new Reader roles.
+			[X] 100% Go back and make sure the changes for Reader roles are properly documented.
+			[X] 100% Revise examples since the code changed significantly.
+		[X] 100% Document the new Opener roles.
+			[X] 100% Document App::PipeFilter::Role::Opener::GenericIO.
+			[X] 100% Document App::PipeFilter::Role::Opener::GenericInput.
+			[X] 100% Document App::PipeFilter::Role::Opener::GenericOutput.
+			[X] 100% Document the use of these Opener roles.
+		[X] 100% Document the executables.
+			[X] 100% Test the executables.
+				[X] 100% jcat*
+				[X] 100% jcut*
+				[X] 100% jmap*
+				[X] 100% json2yaml*
+				[X] 100% jsonpath*
+				[X] 100% jsort*
+				[X] 100% mysql2json*
+			[X] 100% Use command line test cases as examples.
+		[X] 100% Document =head1 METHODS for each library.
+		[_] 0% Test dzil.ini.
+		[X] 100% Clean up after failed Pod::Weaver experiment.
+		[X] 100% Verify that --input and --output are gone.
+			[X] 100% Removed from documentation.
+			[X] 100% Removed from examples.
+	[_] 33% Additional features
+		[X] 100% Allow -o to be JSON::Path descriptions.
+			Implemented jsonpath that acts like jcut but using JSONPath.
+			http://goessner.net/articles/JsonPath/
+		[_] 0% A jcut implementation using JSON:Select.
+			[_] 0% Find or write a Perl implementation or bindings for JSON::Select.
+				http://jsonselect.org/
+			[_] 0% Wrap a jsonselect app around it.
+		[_] 0% Cookbook.
