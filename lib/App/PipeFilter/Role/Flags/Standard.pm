@@ -31,10 +31,11 @@ has verbose => (
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Flags::Standard - provide attributes and getopt
-parsing for standard pipeline filter flags
+App::PipeFilter::Role::Flags::Standard - standard flag attributes and getopt
 
 =head1 SYNOPSIS
 

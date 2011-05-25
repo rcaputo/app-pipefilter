@@ -4,6 +4,8 @@ exit App::PipeFilter::MysqlToJson->new_with_options()->run();
 
 __END__
 
+=pod
+
 =head1 NAME
 
 mysql2json - convert mysql -B output to JSON object streams

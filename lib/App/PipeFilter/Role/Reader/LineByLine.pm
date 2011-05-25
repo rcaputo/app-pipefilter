@@ -12,10 +12,11 @@ sub read_input {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Reader::LineByLine - read input streams one
-line at a time
+App::PipeFilter::Role::Reader::LineByLine - read input streams one line at a time
 
 =head1 SYNOPSIS
 

@@ -46,10 +46,11 @@ sub transform {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::JsonPath - return JSON::Path-specified fields from a
-JSON stream
+App::PipeFilter::JsonPath - return JSON::Path-specified fields from a JSON stream
 
 =head1 SYNOPSIS
 

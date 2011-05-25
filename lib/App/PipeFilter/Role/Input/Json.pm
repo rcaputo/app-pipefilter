@@ -22,6 +22,8 @@ sub decode_input {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::Role::Input::Json - parse input as a stream of JSON records

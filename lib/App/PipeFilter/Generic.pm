@@ -36,6 +36,8 @@ sub filter_file {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::Generic - a generic pipeline filter

@@ -28,6 +28,8 @@ sub transform {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::JsonCut - return specified fields from a JSON stream

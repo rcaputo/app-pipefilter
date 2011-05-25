@@ -19,10 +19,11 @@ sub open_output {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Opener::GenericOutput - a generic method to
-open output files
+App::PipeFilter::Role::Opener::GenericOutput - a generic method to open output files
 
 =head1 SYNOPSIS
 

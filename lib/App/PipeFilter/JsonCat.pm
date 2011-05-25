@@ -8,6 +8,8 @@ with 'App::PipeFilter::Role::Transform::None';
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::JsonCat - useless use of cat(1) for JSON streams

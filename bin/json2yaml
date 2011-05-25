@@ -4,6 +4,8 @@ exit App::PipeFilter::JsonToYaml->new_with_options()->run();
 
 __END__
 
+=pod
+
 =head1 NAME
 
 json2yaml - convert files of JSON objects into a stream of YAML objects

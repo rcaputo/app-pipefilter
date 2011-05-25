@@ -15,10 +15,11 @@ with qw(
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::JsonToYaml - translate streams of JSON objects into
-YAML
+App::PipeFilter::JsonToYaml - translate streams of JSON objects into YAML
 
 =head1 SYNOPSIS
 

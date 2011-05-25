@@ -11,10 +11,11 @@ sub read_input {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Reader::Sysread - read input streams in large
-chunks for speed
+App::PipeFilter::Role::Reader::Sysread - read input streams in large chunks for speed
 
 =head1 SYNOPSIS
 

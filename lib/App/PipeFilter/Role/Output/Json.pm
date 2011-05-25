@@ -13,10 +13,11 @@ sub encode_output {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Output::Json - serialize output as one JSON
-object per line
+App::PipeFilter::Role::Output::Json - serialize output as one JSON object per line
 
 =head1 SYNOPSIS
 

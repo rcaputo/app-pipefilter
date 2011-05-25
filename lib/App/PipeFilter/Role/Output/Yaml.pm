@@ -13,6 +13,8 @@ sub encode_output {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::Role::Output::Yaml - serialize output as YAML

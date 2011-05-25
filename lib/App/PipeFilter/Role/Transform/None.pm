@@ -11,6 +11,8 @@ sub transform {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::Role::Transform::None - don't transform data at all

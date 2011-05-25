@@ -4,6 +4,8 @@ exit App::PipeFilter::JsonMap->new_with_options()->run();
 
 __END__
 
+=pod
+
 =head1 NAME
 
 jmap - map input JSON fields to output JSON fields by renaming them

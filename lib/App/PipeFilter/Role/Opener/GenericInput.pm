@@ -19,10 +19,11 @@ sub open_input {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Opener::GenericInput - a common method to open
-input files
+App::PipeFilter::Role::Opener::GenericInput - common method to open input files
 
 =head1 SYNOPSIS
 

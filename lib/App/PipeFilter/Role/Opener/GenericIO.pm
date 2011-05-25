@@ -11,10 +11,11 @@ with qw(
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::Role::Opener::GenericIO - generic methods to open
-input and output filesj
+App::PipeFilter::Role::Opener::GenericIO - generic methods to open input and output files
 
 =head1 SYNOPSIS
 

@@ -4,6 +4,8 @@ exit App::PipeFilter::JsonCat->new_with_options()->run();
 
 __END__
 
+=pod
+
 =head1 NAME
 
 jcat - concatenate and print JSON files

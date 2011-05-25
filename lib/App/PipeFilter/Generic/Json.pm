@@ -14,6 +14,8 @@ with qw(
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::Generic::Json - a generic JSON pipeline filter

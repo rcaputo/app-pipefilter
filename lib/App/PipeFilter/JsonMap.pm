@@ -44,10 +44,11 @@ sub transform {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::JsonMap - map input fields to output fields by
-renaming them
+App::PipeFilter::JsonMap - map input fields to output fields by renaming them
 
 =head1 SYNOPSIS
 

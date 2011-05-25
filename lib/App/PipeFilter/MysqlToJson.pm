@@ -36,6 +36,8 @@ sub decode_input {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 App::PipeFilter::MysqlToJson - translate mysql batch output to JSON

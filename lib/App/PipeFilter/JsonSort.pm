@@ -69,10 +69,11 @@ sub encode_output {
 
 __END__
 
+=pod
+
 =head1 NAME
 
-App::PipeFilter::JsonSort - a sort(1)-like filter that understands
-JSON fields
+App::PipeFilter::JsonSort - a sort(1)-like filter that understands JSON fields
 
 =head1 SYNOPSIS
 
