@@ -1,6 +1,7 @@
 package App::PipeFilter::Generic;
 
 use Moose;
+
 with qw(
   App::PipeFilter::Role::Flags::Standard
   App::PipeFilter::Role::Opener::GenericIO
@@ -38,26 +39,11 @@ __END__
 
 =pod
 
-=head1 NAME
-
-App::PipeFilter::Generic - a generic pipeline filter
+=abstract a generic pipeline filter.
 
 =head1 SYNOPSIS
 
-  package App::PipeFilter::JsonToYaml;
-
-  use Moose;
-
-  extends 'App::PipeFilter::Generic';
-
-  with qw(
-    App::PipeFilter::Role::Reader::Sysread
-    App::PipeFilter::Role::Input::Json
-    App::PipeFilter::Role::Transform::None
-    App::PipeFilter::Role::Output::Yaml
-  );
-
-  1;
+=for example App::PipeFilter::JsonToYaml
 
 =head1 DESCRIPTION
 
@@ -81,9 +67,9 @@ as it can from the buffer.  It removes the deserialized octets from
 the buffer, leaving any unused data for another time.  decode_input()
 returns an array of the deserialized data structures.
 
-This method is usually implemented by Input roles such as
-L<App::PipeFiter::Role::Input::Json>.  See that module for a sample
-implementation.
+This method is usually implemented by Input roles.
+
+=for example App::PipeFilter::Role::Input::Json decode_input
 
 =head2 encode_output ARRAY
 
@@ -91,9 +77,9 @@ encode_output() accepts an array of Perl data structures to be output.
 It returns an array of serialized data, one element for each input
 data structure.
 
-This method is usually implemented by Output roles such as
-L<App::PipeFilter::Role::Output::Yaml>.  See that module for a sample
-implementation.
+This method is usually implemented by Output roles.
+
+=for example App::PipeFilter::Role::Output::Yaml encode_output
 
 =head2 filter_file IN_FILEHANDLE, OUT_FILEHANDLE
 
@@ -103,6 +89,8 @@ filehandle to the output data sink.
 
 filter_file() invokes read_input(), decode_input(), transform() and
 encode_output() until a single input file is completely filtered.
+
+=for example filter_file
 
 =head2 next_input_file
 
@@ -121,9 +109,9 @@ it.  The special file name "-" opens STDIN.
 App::PipeFilter::Generic's run() method uses open_input() to open the
 files named by next_input_file().
 
-open_input() is implemented in Opener roles such as
-L<App::PipeFilter::Role::Opener::GenericInput>.  See that module for a
-sample implementation.
+open_input() is implemented in Opener roles.
+
+=for example App::PipeFilter::Role::Opener::GenericInput open_input
 
 =head2 open_output FILENAME
 
@@ -133,9 +121,9 @@ it.  The special file name "-" opens STDOUT.
 App::PipeFilter::Generic's run() method uses open_output() to open
 standard output for writing results.
 
-open_output() is implemented in Opener roles such as
-L<App::PipeFilter::Role::Opener::GenericOutput>.  See that module for
-a sample implementation.
+open_output() is implemented in Opener roles.
+
+=for example App::PipeFilter::Role::Opener::GenericOutput open_output
 
 =head2 run
 
@@ -145,7 +133,9 @@ on the command line.  Each input file is opened with open_input().
 The resulting input and output file handles are passed to
 filter_file(), which filters the entire file.
 
-run() is implemented in App::PipeFilter::Generic.
+run() is implemented in [% doc.module() %].
+
+=for example run
 
 =head2 transform ARRAY
 
@@ -155,16 +145,17 @@ on each one.  The resulting array may have greater or fewer items than
 the input array.  transform() may return an empty array if all input
 records are to be discarded.
 
-Common data transformations may be implemented in Transform roles,
-such as L<App::PipeFilter::Role::Transform::None>.  Most of the time,
-however, individual utility classes like L<App::PipeFilter::JsonMap>
-define their own transformations.
+Common data transformations may be implemented in Transform roles.
+Mostly however, individual utility classes like
+L<App::PipeFilter::JsonMap> define their own transformations.
+
+=for example App::PipeFilter::Role::Transform::None transform
 
 =head1 SEE ALSO
 
 You may read this module's implementation in its entirety at
 
-  perldoc -m App::PipeFilter::Generic
+  perldoc -m [% doc.module() %]
 
 L<App::PipeFilter::Generic::Json> consumes common roles for filters
 that read and write streams of JSON objects.
@@ -178,19 +169,11 @@ L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
 
 =head1 REPOSITORY
 
+TODO - Standard =repository
+
 L<https://github.com/rcaputo/app-pipefilter>
 
-=head1 COPYRIGHT AND LICENSE
-
-App::PipeFilter::Generic
-is Copyright 2011 by Rocco Caputo.
-All rights are reserved.
-App::PipeFilter::Generic
-is released under the same terms as Perl itself.
-
-=cut
-
-# vim: ts=2 sw=2 expandtab
+=copyright 2011 Rocco Caputo
 
 =cut
 

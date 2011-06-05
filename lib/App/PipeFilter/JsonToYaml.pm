@@ -1,14 +1,13 @@
 package App::PipeFilter::JsonToYaml;
 
 use Moose;
-
 extends 'App::PipeFilter::Generic';
 
-with qw(
-  App::PipeFilter::Role::Reader::Sysread
-  App::PipeFilter::Role::Input::Json
-  App::PipeFilter::Role::Transform::None
-  App::PipeFilter::Role::Output::Yaml
+with (
+  "App::PipeFilter::Role::Reader::Sysread",
+  "App::PipeFilter::Role::Input::Json",
+  "App::PipeFilter::Role::Transform::None",
+  "App::PipeFilter::Role::Output::Yaml",
 );
 
 1;

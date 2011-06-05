@@ -3,15 +3,15 @@ package App::PipeFilter::Role::Opener::GenericOutput;
 use Moose::Role;
 
 sub open_output {
-	my ($self, $filename) = @_;
+  my ($self, $filename) = @_;
 
   if ($filename eq '-') {
-		warn "writing to standard output\n" if $self->verbose();
+    warn "writing to standard output\n" if $self->verbose();
     return \*STDOUT;
   }
 
-	warn "writing to $filename\n" if $self->verbose();
-	open my $fh, ">", $filename or die "can't write $filename: $!";
+  warn "writing to $filename\n" if $self->verbose();
+  open my $fh, ">", $filename or die "can't write $filename: $!";
   return $fh;
 }
 
