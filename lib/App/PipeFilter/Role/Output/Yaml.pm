@@ -3,7 +3,7 @@ package App::PipeFilter::Role::Output::Yaml;
 use Moose::Role;
 
 sub encode_output {
-  my $yaml_module = $ENV{PERL_APP_PIPEFILTER_YAML} || 'YAML::Syck';
+  my $yaml_module = $ENV{PERL_APP_PIPEFILTER_YAML} || 'YAML::Any';
   eval "require $yaml_module; 1" or die $@;
   my $dump = do { no strict 'refs'; \&{"${yaml_module}::Dump"} }
     or die "$yaml_module has no Dump function";
@@ -48,9 +48,10 @@ format of the data it will write.
 
 =head1 CONFIGURATION
 
-App::PipeFilter::Role::Output::Yaml uses YAML::Syck by default. You can change
-the YAML implementation by setting the C<PERL_APP_PIPEFILTER_YAML> environment
-variable.
+App::PipeFilter::Role::Output::Yaml uses YAML::Any by default, which
+will pick the best YAML implementation you have installed.  You can
+change the YAML implementation by setting the
+C<PERL_APP_PIPEFILTER_YAML> environment variable.
 
 =head1 SEE ALSO
 
