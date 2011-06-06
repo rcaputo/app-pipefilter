@@ -3,6 +3,8 @@ package App::PipeFilter::JsonCut;
 use Moose;
 extends 'App::PipeFilter::Generic::Json';
 
+# TODO - Refactor into a common role?  Duplicated in JsonToTsv.pm.
+
 has o => (
   is            => 'rw',
   isa           => 'ArrayRef',

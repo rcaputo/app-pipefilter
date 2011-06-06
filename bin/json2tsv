@@ -1,0 +1,53 @@
+#!/usr/bin/perl
+use App::PipeFilter::JsonToTsv;
+exit App::PipeFilter::JsonToTsv->new_with_options()->run();
+
+__END__
+
+=pod
+
+=head1 NAME
+
+json2tsv - convert files of JSON objects into a stream of TSV rows
+
+=head1 SYNOPSIS
+
+  json2tsv -o field_1 [-o field_2 ...] [--verbose] [file ...]
+
+=head1 DESCRIPTION
+
+json2tsv(1) cuts out selected portions of each JSON record and writes
+them to standard output as tab-separated rows.  Multiple output fields
+may be specified, one per -o flag.
+
+=head1 SEE ALSO
+
+You may read this utility's implementation in its entirety at
+
+  perldoc -m json2tsv
+
+L<App::PipeFilter::JsonToYaml> implements this utility, including the
+behavior of the -o flag.
+
+L<App::PipeFilter> has top-level documentation including a table of
+contents for all the libraries and utilities included in the project.
+
+=head1 BUGS
+
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=App-PipeFilter>
+
+=head1 REPOSITORY
+
+L<https://github.com/rcaputo/app-pipefilter>
+
+=head1 COPYRIGHT AND LICENSE
+
+json2tsv
+is Copyright 2011 by Rocco Caputo.
+All rights are reserved.
+json2tsv
+is released under the same terms as Perl itself.
+
+=cut
+
+# vim: ts=2 sw=2 expandtab
