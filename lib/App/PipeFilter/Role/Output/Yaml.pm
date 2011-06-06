@@ -2,11 +2,13 @@ package App::PipeFilter::Role::Output::Yaml;
 
 use Moose::Role;
 
-use YAML::Syck qw(Dump);
-
 sub encode_output {
+  my $yaml_module = $ENV{PERL_APP_PIPEFILTER_YAML} || 'YAML::Syck';
+  eval "require $yaml_module; 1" or die $@;
+  my $dump = do { no strict 'refs'; \&{"${yaml_module}::Dump"} }
+    or die "$yaml_module has no Dump function";
   # Skips $self in $_[0].
-  return map { Dump($_) } @_[1..$#_];
+  return map { $dump->($_) } @_[1..$#_];
 }
 
 1;
@@ -41,6 +43,12 @@ that serializes data into YAML for output.
 
 L<App::PipeFilter::Generic> uses encode_output() to determine the
 format of the data it will write.
+
+=head1 CONFIGURATION
+
+App::PipeFilter::Role::Output::Yaml uses YAML::Syck by default. You can change
+the YAML implementation by setting the C<PERL_APP_PIPEFILTER_YAML> environment
+variable.
 
 =head1 SEE ALSO
 
