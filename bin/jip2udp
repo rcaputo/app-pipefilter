@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use App::PipeFilter::JsonIpToUdp;
+exit App::PipeFilter::JsonIpToUdp->new_with_options()->run();
+
+__END__
+
+# vim: ts=2 sw=2 expandtab

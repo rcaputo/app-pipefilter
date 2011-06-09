@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+use App::PipeFilter::JsonPcapToEthernet;
+exit App::PipeFilter::JsonPcapToEthernet->new_with_options()->run();
+
+__END__
+
+# vim: ts=2 sw=2 expandtab
