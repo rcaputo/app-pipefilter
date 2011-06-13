@@ -6,6 +6,7 @@ extends 'App::PipeFilter::Generic';
 
 with qw(
   App::PipeFilter::Role::Reader::Sysread
+  App::PipeFilter::Role::Writer::Print
   App::PipeFilter::Role::Input::Json
   App::PipeFilter::Role::Output::Json
 );

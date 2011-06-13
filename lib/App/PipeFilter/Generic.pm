@@ -29,7 +29,7 @@ sub filter_file {
   while ($self->read_input($ifh, \$buffer)) {
     next unless my (@input) = $self->decode_input(\$buffer);
     next unless my (@output) = $self->transform(@input);
-    print $ofh $_ foreach $self->encode_output(@output);
+    $self->write_output($ofh, $self->encode_output(@output));
   }
 }
 
