@@ -28,6 +28,8 @@ more useful name.
 
 =head1 SEE ALSO
 
+JSONPath documentation: L<http://goessner.net/articles/JsonPath/>
+
 You may read this utility's implementation in its entirety at
 
   perldoc -m jsonpath
