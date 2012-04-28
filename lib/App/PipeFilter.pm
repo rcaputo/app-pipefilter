@@ -1,3 +1,7 @@
+package App::PipeFilter;
+
+1;
+
 =pod
 
 =head1 NAME
