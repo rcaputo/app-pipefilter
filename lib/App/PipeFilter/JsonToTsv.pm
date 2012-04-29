@@ -15,6 +15,7 @@ has o => (
 
 with (
   "App::PipeFilter::Role::Reader::Sysread",
+  "App::PipeFilter::Role::Writer::Print",
   "App::PipeFilter::Role::Input::Json",
   "App::PipeFilter::Role::Transform::None",
   "App::PipeFilter::Role::Output::Tsv",

@@ -8,6 +8,7 @@ with (
   "App::PipeFilter::Role::Input::Json",
   "App::PipeFilter::Role::Transform::None",
   "App::PipeFilter::Role::Output::Yaml",
+  "App::PipeFilter::Role::Writer::Print",
 );
 
 1;
